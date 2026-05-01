@@ -1,0 +1,155 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    @apply bg-navy-950 text-slate-100 antialiased;
+    background-image:
+      radial-gradient(ellipse at 20% 50%, rgba(99,102,241,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(34,211,238,0.08) 0%, transparent 50%);
+    min-height: 100vh;
+  }
+
+  .dark body {
+    @apply bg-navy-950;
+  }
+
+  ::selection {
+    @apply bg-indigo-500/30 text-white;
+  }
+}
+
+@layer components {
+  /* Glass card effect - enhanced */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    @apply rounded-2xl shadow-glass;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+
+  .glass-card-light {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    @apply rounded-2xl shadow-card text-slate-800;
+  }
+
+  /* Gradient text - enhanced */
+  .gradient-text {
+    background: linear-gradient(135deg, #818cf8 0%, #22d3ee 50%, #6366f1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 200%;
+    animation: gradient-shift 4s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* Glow button - enhanced */
+  .btn-primary {
+    @apply relative overflow-hidden rounded-xl px-6 py-3 font-display font-600 text-white transition-all duration-300;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    box-shadow: 0 0 20px rgba(99,102,241,0.4);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 0 30px rgba(99,102,241,0.6), 0 4px 12px rgba(0,0,0,0.3);
+    transform: translateY(-2px);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  .btn-ghost {
+    @apply rounded-xl px-6 py-3 font-display font-600 transition-all duration-300;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+  }
+
+  .btn-ghost:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.35);
+    transform: translateY(-2px);
+  }
+
+  /* Scrollbar - enhanced */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(99,102,241,0.4), rgba(99,102,241,0.2));
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, rgba(99,102,241,0.6), rgba(99,102,241,0.4)); }
+
+  /* Task checkbox - enhanced */
+  .task-checkbox {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid rgba(99,102,241,0.5);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: transparent;
+    flex-shrink: 0;
+  }
+
+  .task-checkbox:checked {
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    border-color: #6366f1;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .task-checkbox:hover {
+    border-color: rgba(99,102,241,0.8);
+    box-shadow: 0 0 8px rgba(99,102,241,0.3);
+  }
+
+  /* Light mode overrides */
+  .light-mode body {
+    @apply bg-slate-50 text-slate-800;
+  }
+}
+
+@layer utilities {
+  .font-600 { font-weight: 600; }
+  .font-700 { font-weight: 700; }
+  .font-800 { font-weight: 800; }
+
+  .text-balance { text-wrap: balance; }
+
+  /* Staggered animation delays */
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
+  .delay-400 { animation-delay: 0.4s; }
+  .delay-500 { animation-delay: 0.5s; }
+}
